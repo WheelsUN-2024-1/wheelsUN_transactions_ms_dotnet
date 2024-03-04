@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\wheelsUN_transactions_ms.props" />
+</Project>
