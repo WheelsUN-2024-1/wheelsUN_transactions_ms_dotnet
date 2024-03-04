@@ -30,6 +30,8 @@ namespace wheelsUN_transactions_ms.Controllers
         
             
         }
+
+        /* Por el momento este endpoint no se utiliza
         [HttpPost("api/")]
         public async Task<object> GetPaymentMethods(PaymentMethod paymentMethod)
         {
@@ -43,6 +45,7 @@ namespace wheelsUN_transactions_ms.Controllers
                 throw ex;
             }
         }
+        */
 
     }
 }
