@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using wheelsUN_transaction_db.Data;
 
@@ -10,9 +11,11 @@ using wheelsUN_transaction_db.Data;
 namespace wheelsUN_transaction_db.Migrations
 {
     [DbContext(typeof(wheelsUN_transaction_context))]
-    partial class wheelsUN_transaction_contextModelSnapshot : ModelSnapshot
+    [Migration("20240305212219__p2")]
+    partial class _p2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

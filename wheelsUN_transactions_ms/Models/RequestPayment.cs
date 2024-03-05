@@ -11,6 +11,6 @@
 
         public Merchant merchant { get; set; }
 
-        public Transaction transaction { get; set; }
+        public TransactionP transaction { get; set; }
     }
 }

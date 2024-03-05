@@ -4,7 +4,7 @@
     /// Modelo de datos para la transacción
     /// </summary>
 
-    public class Transaction
+    public class TransactionP
     {
         public Order order { get; set; }
         public CreditCard creditCard { get; set; }

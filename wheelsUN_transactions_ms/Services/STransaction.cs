@@ -1,7 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using AutoMapper;
+using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Diagnostics;
 using System.Text;
+using wheelsUN_transaction_db.Data;
+using wheelsUN_transaction_db.DTOs;
 using wheelsUN_transactions_ms.Models;
 using wheelsUN_transactions_ms.Utils;
 
@@ -9,7 +13,15 @@ namespace wheelsUN_transactions_ms.Services
 {
     public class STransaction : ISTransaction
     {
+        private readonly wheelsUN_transaction_context _context;
+        private readonly IMapper _mapper;
+        private readonly IServiceScopeFactory _serviceScopeFactory;
+        private readonly MapTransaction _mapTransaction;
 
+        public STransaction(wheelsUN_transaction_context context)
+        {
+            _context = context;
+        }
         public async Task<string> GetData(string url, object payment)
         {
             HttpClient Client = new HttpClient();
@@ -23,6 +35,23 @@ namespace wheelsUN_transactions_ms.Services
             return resultBody;
         }
 
+        public async Task<Transaction> postTransaction(TransactionDTO transaction) {
+            try {
+                Transaction data = _mapper.Map<Transaction>(transaction);
+                using (var scope = _serviceScopeFactory.CreateScope())
+                {
+                    var dbContext = scope.ServiceProvider.GetService<wheelsUN_transaction_context>();
+                    //Add ingresa la información en la entidad correspondiente
+                    dbContext.Add(data);
+                    await dbContext.SaveChangesAsync();
+                }
+                return data;
+            }
+            catch (Exception ex) {
+                throw ex;
+            }
+
+        }
         public async Task<object> PostCardPayment(RequestPayment payment)
         {
             try
@@ -34,11 +63,19 @@ namespace wheelsUN_transactions_ms.Services
 
                 // Obtener el valor de la propiedad "state" y guardarlo en una variable
                 string state = responseObject?.transactionResponse?.state;
+                string transactionIdPay = responseObject?.transactionResponse?.transactionIdPay;
+                string orderId = responseObject?.transactionResponse?.orderId;
 
-              
+
                 if (response != null)
                 {
                     
+
+                    TransactionDTO transaction = _mapTransaction.MapTransactions(payment, state, transactionIdPay, orderId);
+                    if (transaction != null)
+                    {
+                        var result = await postTransaction(transaction);
+                    }
                     
                     return response;
                     
