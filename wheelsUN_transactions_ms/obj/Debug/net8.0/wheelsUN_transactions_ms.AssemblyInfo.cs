@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("wheelsUN_transactions_ms")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cd6d3e9f163c6f1838f01e302187957e6057fb74")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+14d3fafc7ff4cb7223f5a107c1506d9a5573e2e3")]
 [assembly: System.Reflection.AssemblyProductAttribute("wheelsUN_transactions_ms")]
 [assembly: System.Reflection.AssemblyTitleAttribute("wheelsUN_transactions_ms")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
