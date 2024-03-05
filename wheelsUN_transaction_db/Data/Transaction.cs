@@ -13,50 +13,12 @@ namespace wheelsUN_transaction_db.Data
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int transactionID { get; set; }
+        public int transactionId { get; set; }
         [Required]
         public string referenceCode { get; set; }
         public string description { get; set; }
         [Required]
         public int value { get; set; }
-        [Required]
-        public string currency { get; set; }
-        [Required]
-        public string driverId { get; set; }
-        [Required]
-        public string driverName { get; set; }
-        [Required]
-        public string driverEmail { get; set; }
-        [Required]
-        public string driverPhone { get; set; }
-        [Required]
-        public string driverAddress { get; set; }
-        [Required]
-        public string driverCity { get; set; }
-        [Required]
-        public string driverHomephone { get; set; }
-        [Required]
-        public string driverCountry { get; set; }
-        [Required]
-        public string driverPostalCode { get; set; }
-        [Required]
-        public string userId { get; set; }
-        [Required]
-        public string userName { get; set; }
-        [Required]
-        public string userEmail { get; set; }
-        [Required]
-        public string userPhone { get; set; }
-        [Required]
-        public string userAddress { get; set; }
-        [Required]
-        public string userCity { get; set; }
-        [Required]
-        public string userHomephone { get; set; }
-        [Required]
-        public string userCountry { get; set; }
-        [Required]
-        public string userPostalCode { get; set; }
         [Required]
         public string paymentMethod { get; set; }
         [Required]
@@ -65,6 +27,9 @@ namespace wheelsUN_transaction_db.Data
         public string transactionIdPay { get; set; }
         [Required]
         public int orderId { get; set; }
+
+        [Required]
+        public int tripId { get; set; }
 
         [Required]
         public int creditCardId { get; set; }
