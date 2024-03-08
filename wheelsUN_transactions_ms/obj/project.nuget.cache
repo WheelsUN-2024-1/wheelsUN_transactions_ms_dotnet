@@ -1,11 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "wsCucDVRx2EHJCtOvExlrBBOftQWV6m8N2Gj+afODI9caNBoFVM4Kv+mESW2QBKtIYToDHGgT3lJzuCa/ZzxrQ==",
+  "dgSpecHash": "0jWp4SY1e9KKz6L+4lVvkLalZ9vwF35SzMEwmTn0wCggONfuhK+VrSEdIaa7wKQI3onCrVkvLNGBprA9rVDNLQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\admin\\OneDrive\\Escritorio\\Universidad\\Arquisoft\\wheelsUN_transactions_ms\\wheelsUN_transactions_ms\\wheelsUN_transactions_ms\\wheelsUN_transactions_ms.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
-    "C:\\Users\\admin\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.3\\microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",
@@ -56,16 +55,5 @@
     "C:\\Users\\admin\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\system.threading.channels\\6.0.0\\system.threading.channels.6.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1608",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Se detectó una versión del paquete fuera de la restricción de dependencia: AutoMapper.Extensions.Microsoft.DependencyInjection 12.0.1 requiere AutoMapper (= 12.0.1), pero la versión AutoMapper 13.0.1 ya se resolvió.",
-      "libraryId": "AutoMapper",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  "logs": []
 }

@@ -18,9 +18,12 @@ namespace wheelsUN_transactions_ms.Services
         private readonly IServiceScopeFactory _serviceScopeFactory;
         private readonly MapTransaction _mapTransaction;
 
-        public STransaction(wheelsUN_transaction_context context)
+        public STransaction(wheelsUN_transaction_context context, IMapper mapper,IServiceScopeFactory serviceScopeFactory, MapTransaction mapTransaction)
         {
             _context = context;
+            _mapper = mapper;
+            _serviceScopeFactory = serviceScopeFactory;
+            _mapTransaction = mapTransaction;
         }
         public async Task<string> GetData(string url, object payment)
         {
@@ -63,22 +66,23 @@ namespace wheelsUN_transactions_ms.Services
 
                 // Obtener el valor de la propiedad "state" y guardarlo en una variable
                 string state = responseObject?.transactionResponse?.state;
-                string transactionIdPay = responseObject?.transactionResponse?.transactionIdPay;
+                string transactionId = responseObject?.transactionResponse?.transactionId;
                 string orderId = responseObject?.transactionResponse?.orderId;
 
 
                 if (response != null)
                 {
-                    
 
-                    TransactionDTO transaction = _mapTransaction.MapTransactions(payment, state, transactionIdPay, orderId);
-                    if (transaction != null)
-                    {
-                        var result = await postTransaction(transaction);
-                    }
+                    
+                     TransactionDTO transaction = _mapTransaction.MapTransactions(payment, state, transactionId, orderId);
+                     if (transaction != null)
+                     {
+                         var result = await postTransaction(transaction);
+                     }
+
+
                     
                     return response;
-                    
                 }
                 else
                 {

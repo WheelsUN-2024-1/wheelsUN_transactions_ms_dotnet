@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using wheelsUN_transaction_db.Data;
 
@@ -10,9 +11,11 @@ using wheelsUN_transaction_db.Data;
 namespace wheelsUN_transaction_db.Migrations
 {
     [DbContext(typeof(wheelsUN_transaction_context))]
-    partial class wheelsUN_transaction_contextModelSnapshot : ModelSnapshot
+    [Migration("20240308134459__p4")]
+    partial class _p4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,9 +70,8 @@ namespace wheelsUN_transaction_db.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("orderId")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("orderId")
+                        .HasColumnType("int");
 
                     b.Property<string>("paymentMethod")
                         .IsRequired()

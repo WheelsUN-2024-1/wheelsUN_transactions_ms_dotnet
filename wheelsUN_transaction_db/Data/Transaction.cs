@@ -26,7 +26,7 @@ namespace wheelsUN_transaction_db.Data
         [Required]
         public string transactionIdPay { get; set; }
         
-        public int orderId { get; set; }
+        public string orderId { get; set; }
 
         
         public int tripId { get; set; }
@@ -37,7 +37,5 @@ namespace wheelsUN_transaction_db.Data
         [ForeignKey("creditCardId")]
         public virtual CreditCard CreditCard { get; set; }
 
-        [InverseProperty("Transactions")]
-        public ICollection<CreditCard> CreditCards { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace wheelsUN_transaction_db.DTOs
         public string paymentMethod { get; set; }
         public string state { get; set; }
         public string transactionIdPay { get; set; }
-        public int orderId { get; set; }
+        public string orderId { get; set; }
         public int tripId { get; set; }
         public int creditCardId { get; set; }
     }

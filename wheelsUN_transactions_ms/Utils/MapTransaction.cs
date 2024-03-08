@@ -18,9 +18,9 @@ namespace wheelsUN_transactions_ms.Utils
             _transaction.paymentMethod = transaction.transaction.paymentMethod;
             _transaction.state = state;
             _transaction.transactionIdPay = transactionIdPay;
-            _transaction.orderId = int.Parse(orderId);
-            _transaction.tripId = 0;
-            _transaction.creditCardId = 0;
+            _transaction.orderId = orderId;
+            _transaction.tripId = 1;
+            _transaction.creditCardId = 2;
             return _transaction;
 
 

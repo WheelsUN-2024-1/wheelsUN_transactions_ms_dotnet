@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Mvc;
 using wheelsUN_transactions_ms.Models;
 using wheelsUN_transactions_ms.Services;
 
 namespace wheelsUN_transactions_ms.Controllers
 {
+    
+    [Route("api/Transaction")]
     [ApiController]
-    [Route("[controller]")]
     public class TransactionController:ControllerBase
     {
         private readonly ISTransaction _transactions;
@@ -16,6 +18,7 @@ namespace wheelsUN_transactions_ms.Controllers
         }
 
         [HttpPost]
+        
         public async Task<object> PostCardPayment(RequestPayment payment)
         {
             try
@@ -31,21 +34,8 @@ namespace wheelsUN_transactions_ms.Controllers
             
         }
 
-        /* Por el momento este endpoint no se utiliza
-        [HttpPost("api/")]
-        public async Task<object> GetPaymentMethods(PaymentMethod paymentMethod)
-        {
-            try
-            {
-                var result = await _transactions.GetPaymentMethods(paymentMethod);
-                return Ok(result);
-            }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
-        }
-        */
+         
+        
 
     }
 }

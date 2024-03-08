@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using wheelsUN_transaction_db.Data;
 
@@ -10,9 +11,11 @@ using wheelsUN_transaction_db.Data;
 namespace wheelsUN_transaction_db.Migrations
 {
     [DbContext(typeof(wheelsUN_transaction_context))]
-    partial class wheelsUN_transaction_contextModelSnapshot : ModelSnapshot
+    [Migration("20240308132537__p3")]
+    partial class _p3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,6 +31,9 @@ namespace wheelsUN_transaction_db.Migrations
                         .HasColumnType("int");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("creditCardId"));
+
+                    b.Property<int>("TransactionstransactionId")
+                        .HasColumnType("int");
 
                     b.Property<string>("expirationDate")
                         .IsRequired()
@@ -49,6 +55,8 @@ namespace wheelsUN_transaction_db.Migrations
 
                     b.HasKey("creditCardId");
 
+                    b.HasIndex("TransactionstransactionId");
+
                     b.ToTable("CreditCards");
                 });
 
@@ -67,9 +75,8 @@ namespace wheelsUN_transaction_db.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("orderId")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("orderId")
+                        .HasColumnType("int");
 
                     b.Property<string>("paymentMethod")
                         .IsRequired()
@@ -100,6 +107,17 @@ namespace wheelsUN_transaction_db.Migrations
                     b.ToTable("Transactions");
                 });
 
+            modelBuilder.Entity("wheelsUN_transaction_db.Data.CreditCard", b =>
+                {
+                    b.HasOne("wheelsUN_transaction_db.Data.Transaction", "Transactions")
+                        .WithMany("CreditCards")
+                        .HasForeignKey("TransactionstransactionId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Transactions");
+                });
+
             modelBuilder.Entity("wheelsUN_transaction_db.Data.Transaction", b =>
                 {
                     b.HasOne("wheelsUN_transaction_db.Data.CreditCard", "CreditCard")
@@ -109,6 +127,11 @@ namespace wheelsUN_transaction_db.Migrations
                         .IsRequired();
 
                     b.Navigation("CreditCard");
+                });
+
+            modelBuilder.Entity("wheelsUN_transaction_db.Data.Transaction", b =>
+                {
+                    b.Navigation("CreditCards");
                 });
 #pragma warning restore 612, 618
         }
