@@ -26,6 +26,7 @@ namespace wheelsUN_transactions_ms.Services
             {
                 CreditCard data = await _context.CreditCards.FindAsync(id);
                 CreditCardDTO creditCard = _mapper.Map<CreditCardDTO>(data);
+                creditCard.number = Encrypter.DecryptCreditCardNumber(creditCard.number);
 
                 return creditCard;
             }
@@ -39,7 +40,7 @@ namespace wheelsUN_transactions_ms.Services
             try
             {
                 CreditCard data = _mapper.Map<CreditCard>(creditCard);
-                data.number = Encrypter.MaskCreditCardNumber(data.number);
+                data.number = Encrypter.EncryptCreditCardNumber(data.number);
                 data.securityCode = Encrypter.EncryptCreditCardNumber(data.securityCode);
                 data.expirationDate = Encrypter.EncryptCreditCardNumber(data.expirationDate);
 

@@ -1,15 +1,14 @@
-﻿using System.Security.Cryptography;
+﻿using System;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace wheelsUN_transactions_ms.Utils
 {
     public class Encrypter
     {
-        // Clave secreta para encriptar/desencryptar la tarjeta de crédito (debes mantenerla segura)
-        private static readonly byte[] Key = Encoding.UTF8.GetBytes("miClaveSecreta123");
+        private static readonly byte[] Key = Encoding.UTF8.GetBytes("as@.@#XDilfont12");
 
-        // IV (Vector de Inicialización) para el algoritmo de encriptación AES
-        private static readonly byte[] IV = Encoding.UTF8.GetBytes("miVectorDeInicializacion");
+        private static readonly byte[] IV = { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F };
 
         public static string EncryptCreditCardNumber(string creditCardNumber)
         {
@@ -73,4 +72,3 @@ namespace wheelsUN_transactions_ms.Utils
         }
     }
 }
-

@@ -33,7 +33,7 @@ namespace wheelsUN_transactions_ms.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostCard(CreditCardDTO creditCard)
+        public async Task<IActionResult> PostCard([FromBody] CreditCardDTO creditCard)
         {
             try
             {
