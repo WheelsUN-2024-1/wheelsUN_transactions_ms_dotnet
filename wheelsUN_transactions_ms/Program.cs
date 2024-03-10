@@ -17,13 +17,14 @@ builder.Services.AddScoped<ISTransaction, STransaction>();
 builder.Services.AddScoped<ISCreditCard, SCreditCard>();
 
 builder.Services.AddScoped<MapTransaction>();
-builder.Services.AddScoped<TransactionDTO>();
-builder.Services.AddScoped<CreditCardDTO>();
+
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<TransactionDTO>();
+builder.Services.AddScoped<CreditCardDTO>();
 
 
 var connectionString = builder.Configuration.GetConnectionString("ManualConnection");

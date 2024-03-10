@@ -15,9 +15,8 @@ namespace wheelsUN_transaction_db.Data
         public int creditCardId { get; set; }
         public int userId { get; set; }
         public string number { get; set; }
-
         public string name { get; set; }
-        public int securityCode { get; set; }
+        public string securityCode { get; set; }
         public string expirationDate { get; set; }
 
 

@@ -19,10 +19,9 @@ namespace wheelsUN_transactions_ms.Controllers
         }
 
         [HttpGet("{id}")]
-        
         public async Task<IActionResult> GetCard(int id)
         {
-            try
+            try     
             {
                 var result = await _creditCard.GetCard(id);
                 return Ok(result);

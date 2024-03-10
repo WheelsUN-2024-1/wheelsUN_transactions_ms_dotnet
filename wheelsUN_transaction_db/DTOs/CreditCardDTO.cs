@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace wheelsUN_transaction_db.DTOs
 {
@@ -11,9 +12,8 @@ namespace wheelsUN_transaction_db.DTOs
         public int creditCardId { get; set; }
         public int userId { get; set; }
         public string number { get; set; }
-
         public string name { get; set; }
-        public int securityCode { get; set; }
+        public string securityCode { get; set; }
         public string expirationDate { get; set; }
     }
 }

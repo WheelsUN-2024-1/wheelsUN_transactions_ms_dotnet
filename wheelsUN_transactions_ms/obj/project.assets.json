@@ -1003,7 +1003,8 @@
         "dependencies": {
           "AutoMapper": "13.0.1",
           "Microsoft.EntityFrameworkCore": "8.0.2",
-          "Pomelo.EntityFrameworkCore.MySql": "8.0.1"
+          "Pomelo.EntityFrameworkCore.MySql": "8.0.1",
+          "Swashbuckle.AspNetCore": "6.4.0"
         },
         "compile": {
           "bin/placeholder/wheelsUN_transaction_db.dll": {}

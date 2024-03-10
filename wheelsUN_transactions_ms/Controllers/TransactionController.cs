@@ -18,8 +18,7 @@ namespace wheelsUN_transactions_ms.Controllers
         }
 
         [HttpPost]
-        
-        public async Task<object> PostCardPayment(RequestPayment payment)
+        public async Task<IActionResult> PostCardPayment(RequestPayment payment)
         {
             try
             {

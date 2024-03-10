@@ -26,6 +26,7 @@ namespace wheelsUN_transactions_ms.Services
             {
                 CreditCard data = await _context.CreditCards.FindAsync(id);
                 CreditCardDTO creditCard = _mapper.Map<CreditCardDTO>(data);
+
                 return creditCard;
             }
             catch (Exception ex)
@@ -38,6 +39,10 @@ namespace wheelsUN_transactions_ms.Services
             try
             {
                 CreditCard data = _mapper.Map<CreditCard>(creditCard);
+                data.number = Encrypter.MaskCreditCardNumber(data.number);
+                data.securityCode = Encrypter.EncryptCreditCardNumber(data.securityCode);
+                data.expirationDate = Encrypter.EncryptCreditCardNumber(data.expirationDate);
+
                 using (var scope = _serviceScopeFactory.CreateScope())
                 {
                     var dbContext = scope.ServiceProvider.GetService<wheelsUN_transaction_context>();
