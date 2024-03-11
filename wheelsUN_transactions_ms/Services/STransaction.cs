@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -97,25 +98,19 @@ namespace wheelsUN_transactions_ms.Services
             }
 
         }
-        public async Task<object> GetPaymentMethods(PaymentMethod paymentMethod)
-        {
+        public async Task<Transaction> GetTransaction(string referenceCode) {
             try
             {
-                var response = await GetData("https://sandbox.api.payulatam.com/payments-api/4.0/service.cgi", paymentMethod);
-                if (response != null)
-                {
-                    return response;
-                }
-                else
-                {
-                    return null;
-                }
+                Transaction data = await _context.Transactions.FirstOrDefaultAsync(x => x.referenceCode == referenceCode);
+                return data;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+        
         }
+
 
     }
 }

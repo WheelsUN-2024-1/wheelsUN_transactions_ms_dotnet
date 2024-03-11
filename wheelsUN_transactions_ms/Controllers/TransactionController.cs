@@ -32,8 +32,19 @@ namespace wheelsUN_transactions_ms.Controllers
         
             
         }
+        [HttpGet]
 
-         
+        public async Task<IActionResult> GetTransaction(string referenceCode) {
+            try
+            {
+                var result = await _transactions.GetTransaction(referenceCode);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         
 
     }
