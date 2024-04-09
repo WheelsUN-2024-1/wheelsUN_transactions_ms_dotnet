@@ -1,20 +1,25 @@
-FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-ARG TARGETARCH
-WORKDIR /source
+# Use a slim .NET 8.0 base image for efficiency
+FROM microsoft/dotnet:aspnetcore-runtime-8.0 AS base
 
-# copy csproj and restore as distinct layers
-COPY wheelsUN_transaction_ms/*.csproj .
-RUN dotnet restore -a $TARGETARCH
-
-# copy and publish app and libraries
-COPY wheelsUN_transaction_ms/. .
-RUN dotnet publish -a $TARGETARCH --no-restore -o /app
-
-
-# final stage/image
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
-EXPOSE 8080
+# Set working directory within the container
 WORKDIR /app
-COPY --from=build /app .
-USER $APP_UID
-ENTRYPOINT ["./wheelsUN_transaction_ms"]
+
+# Copy project files (.sln or .csproj) and restore dependencies
+COPY . .
+RUN dotnet restore
+
+# Publish the application in Release mode for production (adjust as needed)
+COPY . .
+RUN dotnet publish -c Release -o out
+
+# Create a new image based on the base image, copying the published output
+FROM base AS app
+
+# Copy published application files from the build stage
+COPY --from=build out .
+
+# Set the entry point to run your application
+ENTRYPOINT ["dotnet", "wheelsUN_transaction_ms.dll"]
+
+# Optional: Expose port if your application listens on a specific port
+EXPOSE 7282  # Replace 80 with the actual port your application listens on
